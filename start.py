@@ -21,3 +21,13 @@ iris = pd.read_csv(r"/home/tom/PycharmProjects/data/iris.data",
                    header=None,
                    names=['petal length', 'petal width',
                           'sepal length', 'sepal width', 'species'])
+
+iris.head()
+
+# można sprawdzic rozmiar wczytanego zbioru
+# jeśli obiekt ma więcej wymiarów, to można niezależnie sprawdzać każdy z nich
+# W skryptach ML, często trzeba zainicjować rozmiary innych obiektów zależnie od
+# rozmiaru danych wejściowych. Robi się to korzystając własnie z właściwości shape
+iris.shape
+iris.shape[0]
+iris.shape[1]
