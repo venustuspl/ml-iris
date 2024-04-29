@@ -86,3 +86,39 @@ plt.ylim(y_min, y_max)
 ax.set_title("IRIS DATASET CATEGORIZED")
 
 plt.show()
+
+# utwórz wykres składający się z 4 małych wykresów
+fig, ax = plt.subplots(2, 2, figsize=(10, 6))
+
+# aktualnie rysowanie odbędzie się w określonym pod-wykresie
+plt_position = 1
+
+# obrazujemy zależność miedzy tą zmienną, a pozostałymi cechami próbek
+feature_x = 'petal width'
+
+# dla każdej cechy opisującej kwiaty
+for feature_y in iris.columns[:4]:
+
+    # wybierz kolejny pod wykres
+    plt.subplot(2, 2, plt_position)
+
+    # i rysuj osobne wykresy dla każdego gatunku (te 3 rysowane tu wykresy
+    # nakładają sie na siebie, co pozwala automatycznie generować legendę)
+    for species, color in colors.items():
+        # podczas rysowanie należy odfiltrować tylko kwiaty jednego gatunku
+        # zobacz jak filtrować dane. Służy do tego funkcja loc wywoływana dla data frame
+        # wyrażenie w nawiasie kwadratowym ma zwracać True/False. Zwrócone będą wiersze,
+        # gdzie wyrażenie ma wartość True. Po przecinku znajduje się nazwa kolumny, która ma być zwrócona
+        plt.scatter(iris.loc[iris['species'] == species, feature_x],
+                    iris.loc[iris['species'] == species, feature_y],
+                    label=species,
+                    alpha=0.45,  # transparency
+                    color=color)
+
+    # opisujemy wykres
+    plt.xlabel(feature_x)
+    plt.ylabel(feature_y)
+    plt.legend()
+    plt_position += 1
+
+plt.show()
