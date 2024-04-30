@@ -122,3 +122,18 @@ for feature_y in iris.columns[:4]:
     plt_position += 1
 
 plt.show()
+
+# Zamiast analizować każdą parę niezależnie można generować tzw. scatter matrix,
+# czyli gotową macierz z wykresami dla każdej pary właściwości
+# tutaj wykorzystujemy funkcję scatter_matrix zaimplementowaną w pandas...
+# Do wyznaczenia koloru skorzystaliśmy z funkcji apply. Pozwala ona wywołać prostą funkcję na rzecz
+# każdego wiersza z data frame lub serii danych
+pd.plotting.scatter_matrix(iris, figsize=(8, 8),
+                           color=iris['species'].apply(lambda x: colors[x]));
+plt.show()
+
+# ... a tutaj podobny wykres generowany przez funkcję pairplot z modułu seaborn
+import seaborn as sns
+
+sns.set()
+sns.pairplot(iris, hue="species")
