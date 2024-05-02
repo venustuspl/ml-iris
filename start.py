@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import inline
 import pandas as pd
 import matplotlib.pyplot as plt
+import penguins
 
 from mpl_toolkits.mplot3d import Axes3D
 from sklearn.decomposition import PCA
@@ -137,3 +138,5 @@ import seaborn as sns
 
 sns.set()
 sns.pairplot(iris, hue="species")
+
+plt.show()
